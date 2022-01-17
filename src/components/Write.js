@@ -1,7 +1,24 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
 
 function Write() {
+    const navigate = useNavigate();
+
+    const onSubmit = (values) => {
+        axios.post("http://localhost:8080/lists/",{
+            name: values.name,
+            age: parseInt(values.age),
+            gender: values.gender,
+            job: values.job
+        }).then((result)=>{
+            console.log(result);
+            navigate(-1);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
     return (
         <form>
             <h1>고객 등록하기</h1>
@@ -24,7 +41,7 @@ function Write() {
                     </TableRow>
                 </TableBody>
             </Table>
-            <button type='submit'>등록하기</button>
+            <button type='submit' onSubmit={onSubmit}>등록하기</button>
             <button type='reset'>다시 입력</button>
         </form>
     );

@@ -6,29 +6,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Main() {
-    const customers = [
-        {
-            id:1,
-            name: "성시원",
-            age: 28,
-            gender: "여성",
-            job: "방송국 막내 스태프"
-        }
-    ]
-    axios.get("http://localhost:8080/lists/")
-    // .then(function(){
-    //     const customers = [
-    //         {
-    //             id:1,
-    //             name: "성시원",
-    //             age: 28,
-    //             gender: "여성",
-    //             job: "방송국 막내 스태프"
-    //         }
-    //     ]
-    // }).catch(function(error){
-    //     console.log(error);
-    // })
+    const [ lists, setLists ] = useState([]);
+    
+    useEffect(()=>{
+        axios.get("http://localhost:8080/lists/")
+        .then(function(result){
+            const lists = result.data.lists;
+            console.log(lists);
+            console.log(result);
+            setLists(lists);
+        }).catch(function(err){
+            console.log(err);
+        })
+    },[])
+    
     return (
         <Table>
             <TableHead>
@@ -41,9 +32,9 @@ function Main() {
                 </TableRow>
             </TableHead>
             <TableBody>
-                    {customers.map(customer=>{
+                    {lists.map(list=>{
                         return(
-                            <List key={customer.id} id={customer.id} name={customer.name} age={customer.age} gender={customer.gender} job={customer.job}/>
+                            <List key={list.id} id={list.id} name={list.name} age={list.age} gender={list.gender} job={list.job}/>
                           )
                     })}
             </TableBody>
