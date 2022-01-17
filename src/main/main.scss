@@ -1,0 +1,68 @@
+// header
+header {
+    border-bottom: 1px solid #ccc;
+    div {
+        display: flex;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            li {
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+// footer
+footer {
+    padding-top: 80px;
+    #info {
+        border-top: 3px solid #333;
+        padding-bottom: 20px;
+        div{
+            >ul {
+                display: flex;
+                justify-content: space-between;
+                >li {
+                    width: 31%;
+                    h3 {
+                        padding-top: 20px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #ccc;
+                        margin-bottom: 20px;
+                    }
+                    li {
+                        border-bottom: 1px solid #ddd;
+                        line-height: 30px;
+                        span {
+                            float: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #fmenu {
+        height: 50px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #ccc;
+        ul {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            li {
+                padding: 0 30px;
+                &:not(:last-child){
+                    border-right: 1px solid #ccc;
+                }
+            }
+        }
+    }
+    #fcopy {
+        padding: 20px 0;
+        background-color: #eee;
+    }
+}
