@@ -20,7 +20,10 @@ function Write() {
         })
     }
     return (
-        <form>
+        <form onSubmit={(e)=>{
+            e.preventDefault()
+            onSubmit()
+        }}>
             <h1>고객 등록하기</h1>
             <Table>
                 <TableBody>
@@ -41,7 +44,7 @@ function Write() {
                     </TableRow>
                 </TableBody>
             </Table>
-            <button type='submit' onSubmit={onSubmit}>등록하기</button>
+            <button type='submit'>등록하기</button>
             <button type='reset'>다시 입력</button>
         </form>
     );
